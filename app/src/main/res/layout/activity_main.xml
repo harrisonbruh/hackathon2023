@@ -25,7 +25,6 @@
         android:layout_height="120dp"
         android:contentDescription="@string/moves_cat_down"
         android:onClick="downClick"
-        android:onRelease="stopDownClick"
         android:scaleType="centerCrop"
         android:scaleX="1"
         android:scaleY="1"
@@ -39,7 +38,6 @@
         android:layout_height="120dp"
         android:contentDescription="@string/turns_cat_right"
         android:onClick="rightClick"
-        android:onRelease="stopRightClick"
         android:scaleType="centerCrop"
         android:scaleX="1"
         android:scaleY="1"
@@ -53,7 +51,6 @@
         android:layout_height="120dp"
         android:contentDescription="@string/turns_cat_left"
         android:onClick="leftClick"
-        android:onRelease="stopLeftClick"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/meowButton"
         app:layout_constraintTop_toBottomOf="@+id/upButton"
@@ -84,6 +81,19 @@
         app:layout_constraintStart_toStartOf="@+id/rightButton"
         app:layout_constraintTop_toBottomOf="@+id/downButton"
         app:srcCompat="@drawable/bluetooth_svg" />
+
+    <ImageButton
+        android:id="@+id/laserButton"
+        android:layout_width="169dp"
+        android:layout_height="136dp"
+        android:contentDescription="@string/toggles_the_state_of_laser_mode"
+        android:onClick="laserClick"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/leftButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/downButton"
+        app:srcCompat="@drawable/laser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

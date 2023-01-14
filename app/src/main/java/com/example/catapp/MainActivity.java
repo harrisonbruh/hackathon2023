@@ -14,7 +14,7 @@ import java.util.*;
 
 
 public class MainActivity extends AppCompatActivity {
-    int[] movementToggle = new int[4]; //Represents state of movement, in order: up, down, left, right.
+    int[] movementToggle = new int[5]; //Represents state of movement, in order: up, down, left, right, laser
     // 0 is toggled off, 1 is toggled on
     BluetoothSocket phone;
     BluetoothDevice catBot;
@@ -120,6 +120,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void connectClick(View view) {
 
+    }
+
+    public void laserClick(View view) {
+        if (movementToggle[4]==0) {
+            movementToggle[0] = 0;
+            movementToggle[1] = 0;
+            movementToggle[2] = 0;
+            movementToggle[3] = 0;
+            movementToggle[4] = 1;
+            //Disables all toggle movement, enables laser mode
+        }
+        else movementToggle[4]=0;
     }
 
     // Button Press methods
