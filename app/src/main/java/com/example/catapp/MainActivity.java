@@ -3,6 +3,7 @@ package com.example.catapp;
 import androidx.appcompat.app.AppCompatActivity;
 import android.bluetooth.*;
 import android.os.Bundle;
+import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
+    }
+
+    public void upClick(View view) {
+    }
+
+    public void downClick(View view) {
     }
 
     // Button Press methods
