@@ -5,4 +5,5 @@
     <string name="turns_cat_right">turns cat right</string>
     <string name="moves_cat_down">moves cat down</string>
     <string name="moves_cat_up">moves cat up</string>
+    <string name="allows_for_connection_of_catbot">allows for connection of catbot</string>
 </resources>

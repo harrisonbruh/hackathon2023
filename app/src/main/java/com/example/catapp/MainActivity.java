@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void connectClick(View view) {
+
+    }
+
     // Button Press methods
 
 }

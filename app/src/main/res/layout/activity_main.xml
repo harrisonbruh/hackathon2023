@@ -25,6 +25,7 @@
         android:layout_height="120dp"
         android:contentDescription="@string/moves_cat_down"
         android:onClick="downClick"
+        android:onRelease="stopDownClick"
         android:scaleType="centerCrop"
         android:scaleX="1"
         android:scaleY="1"
@@ -38,6 +39,7 @@
         android:layout_height="120dp"
         android:contentDescription="@string/turns_cat_right"
         android:onClick="rightClick"
+        android:onRelease="stopRightClick"
         android:scaleType="centerCrop"
         android:scaleX="1"
         android:scaleY="1"
@@ -51,6 +53,7 @@
         android:layout_height="120dp"
         android:contentDescription="@string/turns_cat_left"
         android:onClick="leftClick"
+        android:onRelease="stopLeftClick"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/meowButton"
         app:layout_constraintTop_toBottomOf="@+id/upButton"
@@ -68,6 +71,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/meow2" />
+
+    <ImageButton
+        android:id="@+id/connectButton"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/allows_for_connection_of_catbot"
+        android:onClick="connectClick"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rightButton"
+        app:layout_constraintTop_toBottomOf="@+id/downButton"
+        app:srcCompat="@drawable/bluetooth_svg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
