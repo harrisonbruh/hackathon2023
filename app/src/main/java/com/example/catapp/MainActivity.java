@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     BluetoothServerSocket serverSocket; // needed to set up BluetoothSocket phone
     BluetoothManager manager;
 
+    View globalLaserView;
+
     //Android App Lifecycle Methods: onCreate, onStart, onResume, onPause, onStop, onDestroy
     //https://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
     @Override
@@ -91,24 +93,28 @@ public class MainActivity extends AppCompatActivity {
 
     //Button Press methods
     public void upClick(View view) {
+        movementToggle[4]=0;
         if (movementToggle[0]==1) movementToggle[0]=0; //If it is moving forward, stop it.
         if (movementToggle[0]==0) movementToggle[1]=0; movementToggle[0]=1;
         //Turns off backwards movement, turns on forwards movement
     }
 
     public void downClick(View view) {
+        movementToggle[4]=0;
         if (movementToggle[1]==1) movementToggle[1]=0; //If it is moving backwards, stop it.
         if (movementToggle[1]==0) movementToggle[0]=0; movementToggle[1]=1;
         //Turns off forwards movement, turns on backwards movement;
     }
 
     public void leftClick(View view) {
+        movementToggle[4]=0;
         if (movementToggle[2]==1) movementToggle[2]=0; //If it is turning left, stop it.
         if (movementToggle[2]==0) movementToggle[3]=0; movementToggle[2]=1;
         //Turns off right turning movement, turns on left turning;
     }
 
     public void rightClick(View view) {
+        movementToggle[4]=0;
         if (movementToggle[3]==1) movementToggle[3]=0; //If it is turning right, stop it.
         if (movementToggle[3]==0) movementToggle[2]=0; movementToggle[3]=1;
         //Turns off left turning movement, turns on right turning;
@@ -132,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
             //Disables all toggle movement, enables laser mode
         }
         else movementToggle[4]=0;
+
     }
 
     // Button Press methods
