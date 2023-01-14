@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Set<BluetoothDevice> devices = adapter.getBondedDevices();
-        
 
 
 
