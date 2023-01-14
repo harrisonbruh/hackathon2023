@@ -8,8 +8,12 @@ import android.app.Activity;
 import android.bluetooth.*;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.os.ParcelUuid;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.*;
 
 
@@ -21,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     BluetoothAdapter adapter; //needed to find catbot
     BluetoothServerSocket serverSocket; // needed to set up BluetoothSocket phone
     BluetoothManager manager;
+    OutputStream outputStream;
 
     View globalLaserView;
 
@@ -30,13 +35,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //unsure on casting, assuming this is a subclass of Context
-        manager = (BluetoothManager) this.getSystemService(BLUETOOTH_SERVICE);
-
-        //get BluetoothAdapter from BluetoothManager
-        adapter = manager.getAdapter();
-
 
 
 
@@ -126,6 +124,46 @@ public class MainActivity extends AppCompatActivity {
 
     public void connectClick(View view) {
 
+
+        //unsure on casting, assuming this is a subclass of Context
+        manager = (BluetoothManager) this.getSystemService(BLUETOOTH_SERVICE);
+
+        //get BluetoothAdapter from BluetoothManager
+        adapter = manager.getAdapter();
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, PackageManager.PERMISSION_GRANTED);
+            // DONE: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+
+        //Address of Raspberry Pi provided by Ben
+        catBot = adapter.getRemoteDevice("B8:27:EB:85:6E:2F");
+        ParcelUuid[] parcelUuid= catBot.getUuids();
+        try {
+            phone = catBot.createInsecureRfcommSocketToServiceRecord(parcelUuid[0].getUuid());
+            phone.connect();
+
+            outputStream = phone.getOutputStream();
+
+        } catch (IOException e) {
+            Log.e("error", "connection failed", e);
+            //throw new RuntimeException(e);
+        }
+
+
+        /*Set<BluetoothDevice> devices = adapter.getBondedDevices();
+        for (BluetoothDevice device : devices) {
+            Log.i( "test",(device.getName()+"\t"+device.getBondState()+"\t"+device.getType()+"\n") );
+        }*/
+        //Log.i("test", "test");
     }
 
     public void laserClick(View view) {
