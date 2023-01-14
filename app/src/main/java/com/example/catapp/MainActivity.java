@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
     public void downClick(View view) {
     }
 
+    public void leftClick(View view) {
+    }
+
+    public void rightClick(View view) {
+    }
+
     // Button Press methods
 
 }

@@ -8,27 +8,54 @@
 
     <ImageButton
         android:id="@+id/upButton"
-        android:layout_width="342dp"
-        android:layout_height="318dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:onClick="upClick"
         android:onRelease="stopUpClick"
-        android:scaleX="0.3"
-        android:scaleY="0.3"
+        android:scaleType="centerCrop"
+        android:scaleX="1"
+        android:scaleY="1"
         app:srcCompat="@drawable/uparrow"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="170dp" />
 
     <ImageButton
         android:id="@+id/downButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:onClick="downClick"
         android:onRelease="stopDownClick"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
+        android:scaleType="centerCrop"
+        android:scaleX="1"
+        android:scaleY="1"
         app:srcCompat="@drawable/downarrow"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="425dp" />
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="470dp" />
+
+    <ImageButton
+        android:id="@+id/rightButton"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:onClick="rightClick"
+        android:onRelease="stopRightClick"
+        android:scaleType="centerCrop"
+        android:scaleX="1"
+        android:scaleY="1"
+        app:srcCompat="@drawable/rightarrow"
+        tools:layout_editor_absoluteX="263dp"
+        tools:layout_editor_absoluteY="305dp" />
+
+    <ImageButton
+        android:id="@+id/leftButton"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:onClick="leftClick"
+        android:onRelease="stopLeftClick"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/leftarrow"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="315dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
