@@ -10,11 +10,10 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-<<<<<<< HEAD
+
 import android.widget.ImageButton;
-=======
 import android.os.ParcelUuid;
->>>>>>> 874f48951370152245f37018d62ee652ec113f3e
+
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-<<<<<<< HEAD
+
 
         laButton = (ImageButton)findViewById(R.id.laserButton);
         laButton.setImageResource(R.drawable.laser);
@@ -71,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = manager.getAdapter();
 
 
-=======
->>>>>>> 874f48951370152245f37018d62ee652ec113f3e
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
@@ -136,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             movementToggle[0] = 0; //If it is moving forward, stop it
             uButton.setImageResource(R.drawable.uparrow);
         }
-        if (movementToggle[0]==0) {
+        else if (movementToggle[0]==0) {
             movementToggle[1] = 0;
             movementToggle[0] = 1;
             uButton.setImageResource(R.drawable.eviluparrow);
@@ -155,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             dButton.setImageResource(R.drawable.downarrow);
 
         }
-        if (movementToggle[1]==0) {
+        else if (movementToggle[1]==0) {
             movementToggle[0]=0;
             movementToggle[1]=1;
             dButton.setImageResource(R.drawable.evildownarrow);
@@ -173,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
             lButton.setImageResource(R.drawable.leftarrow);
 
         }
-        if (movementToggle[2]==0) {
+        else if (movementToggle[2]==0) {
             movementToggle[3] = 0;
             movementToggle[2] = 1;
             lButton.setImageResource(R.drawable.evilleftarrow);
@@ -190,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
             movementToggle[3] = 0;
             rButton.setImageResource(R.drawable.rightarrow);//If it is turning right, stop it.
         }
-        if (movementToggle[3]==0) {
+        else if (movementToggle[3]==0) {
             movementToggle[2] = 0;
             movementToggle[3] = 1;
             rButton.setImageResource(R.drawable.evilrightarrow);
