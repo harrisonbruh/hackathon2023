@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         //get BluetoothAdapter from BluetoothManager
         adapter = manager.getAdapter();
 
-        //random comment
 
 
 
