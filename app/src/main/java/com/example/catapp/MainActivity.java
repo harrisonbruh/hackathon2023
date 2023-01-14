@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 1);
-            // TODO: Consider calling
+            // DONE: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Set<BluetoothDevice> devices = adapter.getBondedDevices();
+        
+
+
 
 
     }
