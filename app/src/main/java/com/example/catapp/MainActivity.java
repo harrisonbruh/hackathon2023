@@ -9,6 +9,7 @@ import android.bluetooth.*;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import java.util.*;
 
@@ -22,7 +23,12 @@ public class MainActivity extends AppCompatActivity {
     BluetoothServerSocket serverSocket; // needed to set up BluetoothSocket phone
     BluetoothManager manager;
 
-    View globalLaserView;
+    ImageButton laButton;
+
+    ImageButton rButton;
+    ImageButton lButton;
+    ImageButton uButton;
+    ImageButton dButton;
 
     //Android App Lifecycle Methods: onCreate, onStart, onResume, onPause, onStop, onDestroy
     //https://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
@@ -30,6 +36,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        laButton = (ImageButton)findViewById(R.id.laserButton);
+        laButton.setImageResource(R.drawable.laser);
+
+        rButton = (ImageButton)findViewById(R.id.rightButton);
+        rButton.setImageResource(R.drawable.rightarrow);
+
+        dButton = (ImageButton)findViewById(R.id.downButton);
+        dButton.setImageResource(R.drawable.downarrow);
+
+        lButton = (ImageButton)findViewById(R.id.leftButton);
+        lButton.setImageResource(R.drawable.leftarrow);
+
+        uButton = (ImageButton)findViewById(R.id.upButton);
+        uButton.setImageResource(R.drawable.uparrow);
+
+
 
         //unsure on casting, assuming this is a subclass of Context
         manager = (BluetoothManager) this.getSystemService(BLUETOOTH_SERVICE);
@@ -94,29 +118,73 @@ public class MainActivity extends AppCompatActivity {
     //Button Press methods
     public void upClick(View view) {
         movementToggle[4]=0;
-        if (movementToggle[0]==1) movementToggle[0]=0; //If it is moving forward, stop it.
-        if (movementToggle[0]==0) movementToggle[1]=0; movementToggle[0]=1;
+
+        laButton.setImageResource(R.drawable.laser);
+
+        if (movementToggle[0]==1) {
+            movementToggle[0] = 0; //If it is moving forward, stop it
+            uButton.setImageResource(R.drawable.uparrow);
+        }
+        if (movementToggle[0]==0) {
+            movementToggle[1] = 0;
+            movementToggle[0] = 1;
+            uButton.setImageResource(R.drawable.eviluparrow);
+            dButton.setImageResource(R.drawable.downarrow);
+
+        }
         //Turns off backwards movement, turns on forwards movement
     }
 
     public void downClick(View view) {
         movementToggle[4]=0;
-        if (movementToggle[1]==1) movementToggle[1]=0; //If it is moving backwards, stop it.
-        if (movementToggle[1]==0) movementToggle[0]=0; movementToggle[1]=1;
+        laButton.setImageResource(R.drawable.laser);
+
+        if (movementToggle[1]==1){
+            movementToggle[1]=0; //If it is moving backwards, stop it.
+            dButton.setImageResource(R.drawable.downarrow);
+
+        }
+        if (movementToggle[1]==0) {
+            movementToggle[0]=0;
+            movementToggle[1]=1;
+            dButton.setImageResource(R.drawable.evildownarrow);
+            uButton.setImageResource(R.drawable.uparrow);
+        }
         //Turns off forwards movement, turns on backwards movement;
     }
 
     public void leftClick(View view) {
         movementToggle[4]=0;
-        if (movementToggle[2]==1) movementToggle[2]=0; //If it is turning left, stop it.
-        if (movementToggle[2]==0) movementToggle[3]=0; movementToggle[2]=1;
+        laButton.setImageResource(R.drawable.laser);
+
+        if (movementToggle[2]==1) {
+            movementToggle[2]=0; //If it is turning left, stop it.
+            lButton.setImageResource(R.drawable.leftarrow);
+
+        }
+        if (movementToggle[2]==0) {
+            movementToggle[3] = 0;
+            movementToggle[2] = 1;
+            lButton.setImageResource(R.drawable.evilleftarrow);
+            rButton.setImageResource(R.drawable.rightarrow);
+        }
         //Turns off right turning movement, turns on left turning;
     }
 
     public void rightClick(View view) {
         movementToggle[4]=0;
-        if (movementToggle[3]==1) movementToggle[3]=0; //If it is turning right, stop it.
-        if (movementToggle[3]==0) movementToggle[2]=0; movementToggle[3]=1;
+        laButton.setImageResource(R.drawable.laser);
+
+        if (movementToggle[3]==1) {
+            movementToggle[3] = 0;
+            rButton.setImageResource(R.drawable.rightarrow);//If it is turning right, stop it.
+        }
+        if (movementToggle[3]==0) {
+            movementToggle[2] = 0;
+            movementToggle[3] = 1;
+            rButton.setImageResource(R.drawable.evilrightarrow);
+            lButton.setImageResource(R.drawable.leftarrow);
+        }
         //Turns off left turning movement, turns on right turning;
     }
 
@@ -135,9 +203,18 @@ public class MainActivity extends AppCompatActivity {
             movementToggle[2] = 0;
             movementToggle[3] = 0;
             movementToggle[4] = 1;
+            laButton.setImageResource(R.drawable.evillaser);
+            rButton.setImageResource(R.drawable.rightarrow);
+            lButton.setImageResource(R.drawable.leftarrow);
+            uButton.setImageResource(R.drawable.uparrow);
+            dButton.setImageResource(R.drawable.downarrow);
+
             //Disables all toggle movement, enables laser mode
         }
-        else movementToggle[4]=0;
+        else{
+            movementToggle[4]=0;
+            laButton.setImageResource(R.drawable.laser);
+        }
 
     }
 
