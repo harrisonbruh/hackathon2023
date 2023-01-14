@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
     public void rightClick(View view) {
     }
 
+    public void meowClick(View view) {
+    }
+
     // Button Press methods
 
 }
