@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cat App</string>
+    <string name="cat_meow">cat meow</string>
+    <string name="turns_cat_left">turns cat left</string>
+    <string name="turns_cat_right">turns cat right</string>
+    <string name="moves_cat_down">moves cat down</string>
+    <string name="moves_cat_up">moves cat up</string>
 </resources>

@@ -7,6 +7,7 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
+    int[] movementToggle = new int[4]; //Represents state of movement, in order: up, down, left, right
     BluetoothSocket phone;
     BluetoothDevice catBot;
     BluetoothAdapter adapter; //needed to find catbot
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void meowClick(View view) {
+
     }
 
     // Button Press methods
