@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         //get BluetoothAdapter from BluetoothManager
         adapter = manager.getAdapter();
 
+        //random comment
+
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
