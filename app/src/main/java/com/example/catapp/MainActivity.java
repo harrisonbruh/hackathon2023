@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         funnyMeow = MediaPlayer.create(this, R.raw.funnymeow);
         media[1]=funnyMeow;
 
-        somberMeow = MediaPlayer.create(this, R.raw.somberMeow);
+        somberMeow = MediaPlayer.create(this, R.raw.sombermeow);
         media[2]=somberMeow;
 
         happyMeow = MediaPlayer.create(this, R.raw.happymeow);
