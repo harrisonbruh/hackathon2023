@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.os.ParcelUuid;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton lButton;
     ImageButton uButton;
     ImageButton dButton;
+    EditText ipaddress;
 
     //Initialize meow media files
     MediaPlayer meow1;
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         uButton = findViewById(R.id.upButton);
         uButton.setImageResource(R.drawable.uparrow);
 
-
+        ipaddress = findViewById(R.id.ipinput);
 
         //unsure on casting, assuming this is a subclass of Context
         manager = (BluetoothManager) this.getSystemService(BLUETOOTH_SERVICE);
