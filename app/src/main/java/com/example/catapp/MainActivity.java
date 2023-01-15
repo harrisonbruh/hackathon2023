@@ -46,19 +46,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        laButton = (ImageButton)findViewById(R.id.laserButton);
+        laButton = findViewById(R.id.laserButton);
         laButton.setImageResource(R.drawable.laser);
 
-        rButton = (ImageButton)findViewById(R.id.rightButton);
+        rButton = findViewById(R.id.rightButton);
         rButton.setImageResource(R.drawable.rightarrow);
 
-        dButton = (ImageButton)findViewById(R.id.downButton);
+        dButton = findViewById(R.id.downButton);
         dButton.setImageResource(R.drawable.downarrow);
 
-        lButton = (ImageButton)findViewById(R.id.leftButton);
+        lButton = findViewById(R.id.leftButton);
         lButton.setImageResource(R.drawable.leftarrow);
 
-        uButton = (ImageButton)findViewById(R.id.upButton);
+        uButton = findViewById(R.id.upButton);
         uButton.setImageResource(R.drawable.uparrow);
 
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 1);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 0);
             // DONE: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        Set<BluetoothDevice> devices = adapter.getBondedDevices();
+        //Set<BluetoothDevice> devices = adapter.getBondedDevices();
 
 
 
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, PackageManager.PERMISSION_GRANTED);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 0);
             // DONE: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
