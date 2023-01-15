@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer funnyMeow;
     MediaPlayer somberMeow;
     MediaPlayer happyMeow;
+    MediaPlayer meow2;
 
-    MediaPlayer[] media = new MediaPlayer[4];
+    MediaPlayer[] media = new MediaPlayer[5];
 
     //Android App Lifecycle Methods: onCreate, onStart, onResume, onPause, onStop, onDestroy
     //https://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         happyMeow = MediaPlayer.create(this, R.raw.happymeow);
         media[3]=happyMeow;
+
+        happyMeow = MediaPlayer.create(this, R.raw.meow2);
+        media[4]=meow2;
 
         laButton = findViewById(R.id.laserButton);
         laButton.setImageResource(R.drawable.laser);
