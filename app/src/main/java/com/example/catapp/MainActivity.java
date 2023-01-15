@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.*;
 
+import android.media.MediaPlayer;
 
 public class MainActivity extends AppCompatActivity {
     int[] movementToggle = new int[5]; //Represents state of movement, in order: up, down, left, right, laser
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton uButton;
     ImageButton dButton;
 
+    MediaPlayer mp;
+
     //Android App Lifecycle Methods: onCreate, onStart, onResume, onPause, onStop, onDestroy
     //https://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
     @Override
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        mp = MediaPlayer.create(this, R.raw.catmeow);
 
         laButton = findViewById(R.id.laserButton);
         laButton.setImageResource(R.drawable.laser);
@@ -197,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void meowClick(View view) {
-
+        mp.start();
     }
 
     public void connectClick(View view) {
