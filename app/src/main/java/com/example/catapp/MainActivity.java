@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
         catBot = adapter.getRemoteDevice("B8:27:EB:85:6E:2F");
         ParcelUuid[] parcelUuid= catBot.getUuids();
         try {
-            phone = catBot.createInsecureRfcommSocketToServiceRecord(parcelUuid[0].getUuid());
+            phone = catBot.createInsecureRfcommSocketToServiceRecord(UUID.fromString("1e0ca4ea-299d-4335-93eb-27fcfe7fa848"));
             phone.connect();
 
             outputStream = phone.getOutputStream();
