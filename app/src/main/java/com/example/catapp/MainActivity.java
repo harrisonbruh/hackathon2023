@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     BluetoothManager manager;
     OutputStream outputStream;
 
+    //Initialize all image buttons
     ImageButton laButton;
 
     ImageButton rButton;
@@ -38,7 +39,13 @@ public class MainActivity extends AppCompatActivity {
     ImageButton uButton;
     ImageButton dButton;
 
-    MediaPlayer mp;
+    //Initialize meow media files
+    MediaPlayer meow1;
+    MediaPlayer funnyMeow;
+    MediaPlayer somberMeow;
+    MediaPlayer happyMeow;
+
+    MediaPlayer[] media = new MediaPlayer[4];
 
     //Android App Lifecycle Methods: onCreate, onStart, onResume, onPause, onStop, onDestroy
     //https://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
@@ -47,7 +54,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mp = MediaPlayer.create(this, R.raw.catmeow);
+        meow1 = MediaPlayer.create(this, R.raw.catmeow);
+        media[0]=meow1;
+
+        funnyMeow = MediaPlayer.create(this, R.raw.funnymeow);
+        media[1]=funnyMeow;
+
+        somberMeow = MediaPlayer.create(this, R.raw.somberMeow);
+        media[2]=somberMeow;
+
+        happyMeow = MediaPlayer.create(this, R.raw.happymeow);
+        media[3]=happyMeow;
 
         laButton = findViewById(R.id.laserButton);
         laButton.setImageResource(R.drawable.laser);
@@ -200,7 +217,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void meowClick(View view) {
-        mp.start();
+        //Plays a random media file for the meowing
+        media[(int)(Math.random()*media.length)].start();
     }
 
     public void connectClick(View view) {
