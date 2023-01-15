@@ -18,13 +18,17 @@ import android.os.ParcelUuid;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.*;
 
 import android.media.MediaPlayer;
 
 public class MainActivity extends AppCompatActivity {
-    int[] movementToggle = new int[5]; //Represents state of movement, in order: up, down, left, right, laser
+    byte[] movementToggle = new byte[5]; //Represents state of movement, in order: up, down, left, right, laser
     // 0 is toggled off, 1 is toggled on
     //BluetoothSocket phone;
     //BluetoothDevice catBot;
@@ -90,30 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
         ipaddress = findViewById(R.id.ipinput);
 
-        //unsure on casting, assuming this is a subclass of Context
-        manager = (BluetoothManager) this.getSystemService(BLUETOOTH_SERVICE);
-
-        //get BluetoothAdapter from BluetoothManager
-        adapter = manager.getAdapter();
-
-
-
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 0);
-            // DONE: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+        try {
+            datagramSocket = new DatagramSocket();
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
         }
-        //Set<BluetoothDevice> devices = adapter.getBondedDevices();
-
-
-
 
     }
 
@@ -149,6 +134,23 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+//send data method
+    public void sendData() {
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try  {
+                    DatagramPacket datagramPacket = new DatagramPacket(movementToggle, 5, InetAddress.getByName((ipaddress.getText().toString())), 2012);
+                    datagramSocket.send(datagramPacket);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+    }
 
     //Button Press methods
     public void upClick(View view) {
@@ -168,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         //Turns off backwards movement, turns on forwards movement
+        sendData();
     }
 
     public void downClick(View view) {
@@ -186,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
             uButton.setImageResource(R.drawable.uparrow);
         }
         //Turns off forwards movement, turns on backwards movement;
+        sendData();
     }
 
     public void leftClick(View view) {
@@ -204,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
             rButton.setImageResource(R.drawable.rightarrow);
         }
         //Turns off right turning movement, turns on left turning;
+        sendData();
     }
 
     public void rightClick(View view) {
@@ -221,15 +226,18 @@ public class MainActivity extends AppCompatActivity {
             lButton.setImageResource(R.drawable.leftarrow);
         }
         //Turns off left turning movement, turns on right turning;
+        sendData();
     }
 
     public void meowClick(View view) {
         //Plays a random media file for the meowing
         media[(int)(Math.random()*media.length)].start();
+
+        sendData();
     }
 
     public void connectClick(View view) {
-
+    sendData();
 
 
 
@@ -295,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
             movementToggle[4]=0;
             laButton.setImageResource(R.drawable.laser);
         }
+        sendData();
 
     }
 
