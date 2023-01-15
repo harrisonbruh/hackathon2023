@@ -18,6 +18,7 @@ import android.os.ParcelUuid;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.DatagramSocket;
 import java.util.*;
 
 import android.media.MediaPlayer;
@@ -25,12 +26,12 @@ import android.media.MediaPlayer;
 public class MainActivity extends AppCompatActivity {
     int[] movementToggle = new int[5]; //Represents state of movement, in order: up, down, left, right, laser
     // 0 is toggled off, 1 is toggled on
-    BluetoothSocket phone;
-    BluetoothDevice catBot;
-    BluetoothAdapter adapter; //needed to find catbot
-    BluetoothServerSocket serverSocket; // needed to set up BluetoothSocket phone
-    BluetoothManager manager;
-    OutputStream outputStream;
+    //BluetoothSocket phone;
+    //BluetoothDevice catBot;
+    //BluetoothAdapter adapter; //needed to find catbot
+    //BluetoothServerSocket serverSocket; // needed to set up BluetoothSocket phone
+    //BluetoothManager manager;
+    DatagramSocket datagramSocket;
 
     //Initialize all image buttons
     ImageButton laButton;
@@ -230,6 +231,10 @@ public class MainActivity extends AppCompatActivity {
     public void connectClick(View view) {
 
 
+
+
+
+        /*
         //unsure on casting, assuming this is a subclass of Context
         manager = (BluetoothManager) this.getSystemService(BLUETOOTH_SERVICE);
 
@@ -261,14 +266,14 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("error", "connection failed", e);
             //throw new RuntimeException(e);
-        }
-
+        }*/
 
         /*Set<BluetoothDevice> devices = adapter.getBondedDevices();
         for (BluetoothDevice device : devices) {
             Log.i( "test",(device.getName()+"\t"+device.getBondState()+"\t"+device.getType()+"\n") );
         }*/
         //Log.i("test", "test");
+
     }
 
     public void laserClick(View view) {
