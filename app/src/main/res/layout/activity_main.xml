@@ -71,16 +71,16 @@
 
     <ImageButton
         android:id="@+id/connectButton"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
         android:contentDescription="@string/allows_for_connection_of_catbot"
         android:onClick="connectClick"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/upButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/rightButton"
-        app:layout_constraintTop_toBottomOf="@+id/downButton"
-        app:srcCompat="@drawable/bluetooth_svg" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wifi" />
 
     <ImageButton
         android:id="@+id/laserButton"
@@ -90,7 +90,7 @@
         android:onClick="laserClick"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/leftButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/downButton"
         app:srcCompat="@drawable/laser" />
@@ -102,7 +102,7 @@
         android:hint="000.000.000.000"
         android:textSize="10pt"
         app:layout_constraintBottom_toTopOf="@+id/upButton"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/connectButton"
         app:layout_constraintStart_toStartOf="@+id/upButton"
         app:layout_constraintTop_toTopOf="parent" />
 
