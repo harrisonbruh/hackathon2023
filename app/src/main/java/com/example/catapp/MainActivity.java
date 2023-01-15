@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         happyMeow = MediaPlayer.create(this, R.raw.happymeow);
         media[3]=happyMeow;
 
-        happyMeow = MediaPlayer.create(this, R.raw.meow2);
+        meow2 = MediaPlayer.create(this, R.raw.meow2);
         media[4]=meow2;
 
         laButton = findViewById(R.id.laserButton);
